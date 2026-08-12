@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 640" role="img" aria-label="Velvet Evening Gown">
+  <defs>
+    <linearGradient id="velvet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#157a4c"/>
+      <stop offset="50%" stop-color="#0F5132"/>
+      <stop offset="100%" stop-color="#0a3a24"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="640" fill="#f4efe7"/>
+  <path d="M205,110 L250,132 L295,110 L318,168 L300,210 L360,528 L140,528 L200,210 L182,168 Z" fill="url(#velvet)" stroke="rgba(0,0,0,0.18)" stroke-width="2"/>
+  <path d="M250,132 L250,528 M230,300 L270,300" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <rect y="540" width="500" height="100" fill="rgba(36,29,22,0.82)"/>
+  <text x="250" y="578" fill="#ffffff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="26" text-anchor="middle">Velvet Evening Gown</text>
+  <text x="250" y="608" fill="#e4d9c8" font-family="Sora, sans-serif" font-size="17" text-anchor="middle">Silk Velvet · Deep Emerald</text>
+</svg>

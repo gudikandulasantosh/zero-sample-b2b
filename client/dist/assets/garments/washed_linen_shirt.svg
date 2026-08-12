@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 640" role="img" aria-label="Linen Button-Down">
+  <rect width="500" height="640" fill="#f4efe7"/>
+  <path d="M170,120 L210,96 L250,120 L290,96 L330,120 L360,170 L332,196 L340,520 L160,520 L168,196 L140,170 Z" fill="#C9A66B" stroke="rgba(0,0,0,0.14)" stroke-width="2"/>
+  <line x1="250" y1="120" x2="250" y2="520" stroke="rgba(0,0,0,0.18)" stroke-width="2"/>
+  <circle cx="250" cy="220" r="4" fill="rgba(0,0,0,0.2)"/>
+  <circle cx="250" cy="300" r="4" fill="rgba(0,0,0,0.2)"/>
+  <circle cx="250" cy="380" r="4" fill="rgba(0,0,0,0.2)"/>
+  <rect y="540" width="500" height="100" fill="rgba(36,29,22,0.82)"/>
+  <text x="250" y="578" fill="#ffffff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="26" text-anchor="middle">Linen Button-Down</text>
+  <text x="250" y="608" fill="#e4d9c8" font-family="Sora, sans-serif" font-size="17" text-anchor="middle">Washed Linen · Warm Sand</text>
+</svg>

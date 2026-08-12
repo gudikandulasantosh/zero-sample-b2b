@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 640" role="img" aria-label="Silk Slip Dress">
+  <rect width="500" height="640" fill="#f4efe7"/>
+  <path d="M150,120 L200,92 L250,112 L300,92 L350,120 L332,182 L348,528 L152,528 L168,182 Z" fill="#C85A17" stroke="rgba(0,0,0,0.14)" stroke-width="2"/>
+  <path d="M200,92 L250,112 L300,92" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3"/>
+  <rect y="540" width="500" height="100" fill="rgba(36,29,22,0.82)"/>
+  <text x="250" y="578" fill="#ffffff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="26" text-anchor="middle">Silk Slip Dress</text>
+  <text x="250" y="608" fill="#e4d9c8" font-family="Sora, sans-serif" font-size="17" text-anchor="middle">Silk Charmeuse · Terracotta</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 640" role="img" aria-label="Heavy Tweed Blazer">
+  <defs>
+    <pattern id="tweed" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="12" height="12" fill="#6B7280"/>
+      <line x1="0" y1="0" x2="0" y2="12" stroke="rgba(255,255,255,0.14)" stroke-width="3"/>
+      <line x1="6" y1="0" x2="6" y2="12" stroke="rgba(0,0,0,0.14)" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="500" height="640" fill="#f4efe7"/>
+  <path d="M165,120 L215,98 L250,150 L285,98 L335,120 L365,180 L336,206 L344,524 L156,524 L164,206 L135,180 Z" fill="url(#tweed)" stroke="rgba(0,0,0,0.18)" stroke-width="2"/>
+  <path d="M215,98 L250,150 L250,320 M285,98 L250,150" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="2"/>
+  <rect y="540" width="500" height="100" fill="rgba(36,29,22,0.82)"/>
+  <text x="250" y="578" fill="#ffffff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="26" text-anchor="middle">Heavy Tweed Blazer</text>
+  <text x="250" y="608" fill="#e4d9c8" font-family="Sora, sans-serif" font-size="17" text-anchor="middle">Bouclé Tweed · Cool Slate</text>
+</svg>

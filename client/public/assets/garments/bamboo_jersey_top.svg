@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 640" role="img" aria-label="Bamboo Jersey Top">
+  <rect width="500" height="640" fill="#f4efe7"/>
+  <path d="M175,124 Q250,96 325,124 L358,176 L330,202 Q332,360 320,500 Q250,516 180,500 Q168,360 170,202 L142,176 Z" fill="#D8A7A1" stroke="rgba(0,0,0,0.12)" stroke-width="2"/>
+  <path d="M210,120 Q250,150 290,120" fill="none" stroke="rgba(0,0,0,0.14)" stroke-width="2"/>
+  <rect y="540" width="500" height="100" fill="rgba(36,29,22,0.82)"/>
+  <text x="250" y="578" fill="#ffffff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="26" text-anchor="middle">Bamboo Jersey Top</text>
+  <text x="250" y="608" fill="#e4d9c8" font-family="Sora, sans-serif" font-size="17" text-anchor="middle">Bamboo Jersey · Soft Rose Neutral</text>
+</svg>
