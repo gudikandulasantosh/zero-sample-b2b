@@ -8,7 +8,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const ROOT_DIR = path.resolve(__dirname, "..");
-export const UPLOADS_DIR = path.resolve(ROOT_DIR, "uploads");
+// Vercel's filesystem is read-only except for /tmp, so redirect uploads there.
+export const UPLOADS_DIR = process.env.VERCEL
+  ? "/tmp/uploads"
+  : path.resolve(ROOT_DIR, "uploads");
 
 export const CORS_ORIGINS = [
   "http://localhost:5173",

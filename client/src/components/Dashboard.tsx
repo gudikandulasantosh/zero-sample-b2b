@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import ContentStage from "./dashboard/ContentStage";
 import ControlPanel from "./dashboard/ControlPanel";
@@ -21,7 +20,6 @@ import { PROJECT_NAME } from "./dashboard/control-panel/ProjectSection";
 import { exportCombinedTechPack } from "./dashboard/content-stage/techPack";
 
 export default function Dashboard() {
-  const navigate = useNavigate();
   const [color, setColor] = useState("#C85A17");
   const [fabricTexture, setFabricTexture] = useState<string>(FABRIC_TEXTURE_OPTIONS[0]);
   const [targetGender, setTargetGender] = useState<(typeof TARGET_GENDER_OPTIONS)[number]>(TARGET_GENDER_OPTIONS[0]);
@@ -182,11 +180,16 @@ export default function Dashboard() {
 
 
 
+  const hasGeneratedArchetypes = archetypes.some((item, index) => {
+    const id = item.id || index + 1;
+    return Boolean(item.img || archetypeImagesById[id]);
+  });
+
   return (
     <div className="dashboard-shell">
       <div className="dashboard-noise" aria-hidden="true" />
 
-      <TopBar onExportReport={handleExportCombinedReport} onSwitchMode={() => navigate("/")} />
+      <TopBar onExportReport={handleExportCombinedReport} exportDisabled={!hasGeneratedArchetypes} />
 
       <main className="dashboard-grid">
         <ControlPanel

@@ -9,9 +9,6 @@ import { CORS_ORIGINS, ROOT_DIR, UPLOADS_DIR } from "./config.js";
 import { HttpError, toHttpError } from "./errors.js";
 import { runCadToPhoto } from "./cadToPhoto.js";
 import { runYoucamClothLayer, runYoucamImageToImage, runYoucamVto, uploadYoucamFile, uploadYoucamFileFromUrl } from "./youcam.js";
-import { runSkinAnalysis } from "./skinAnalysis.js";
-import { recommendGarments } from "./recommendationEngine.js";
-import { GARMENT_PRESETS, getPresetById } from "./garmentPresets.js";
 
 fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 const CLIENT_DIST_DIR = path.resolve(ROOT_DIR, "..", "client", "dist");
@@ -148,88 +145,6 @@ app.post("/api/cad-to-photo", async (req, res, next) => {
   }
 });
 
-// ---------------------------------------------------------------------------
-// B2C Client Concierge (Personal Atelier) routes
-// ---------------------------------------------------------------------------
-
-app.get("/api/concierge/garments", (_req, res) => {
-  res.json({ status: "success", garments: GARMENT_PRESETS });
-});
-
-app.post("/api/concierge/analyze", async (req, res, next) => {
-  try {
-    const { src_file_url, src_file_id } = req.body || {};
-    if (!src_file_url && !src_file_id) {
-      throw new HttpError(400, "src_file_url or src_file_id is required.");
-    }
-
-    const analysis = await runSkinAnalysis({ src_file_url, src_file_id });
-    const recommendation = recommendGarments(analysis.metrics);
-
-    res.json({
-      status: "success",
-      provider: analysis.provider,
-      metrics: recommendation.target.metrics,
-      target: recommendation.target,
-      rationale: recommendation.rationale,
-      top_match: recommendation.topMatch,
-      recommendations: recommendation.recommendations,
-    });
-  } catch (error) {
-    next(error);
-  }
-});
-
-app.post("/api/concierge/tryon", async (req, res, next) => {
-  try {
-    const { user_selfie_url, garment_ref_url, preset_id } = req.body || {};
-    if (!user_selfie_url) {
-      throw new HttpError(400, "user_selfie_url is required.");
-    }
-
-    let refImageUrl = garment_ref_url;
-    let preset = null;
-    if (preset_id) {
-      preset = getPresetById(preset_id);
-      if (!preset) {
-        throw new HttpError(400, `Unknown garment preset_id: ${preset_id}`);
-      }
-      refImageUrl = refImageUrl || preset.refImageUrl;
-    }
-
-    if (!refImageUrl) {
-      throw new HttpError(400, "garment_ref_url or a valid preset_id is required.");
-    }
-
-    // Without a live YouCam key the cloth-v3 layer call can't run; echo the garment
-    // reference so the concierge demo still renders end-to-end.
-    if (!(process.env.YOUCAM_API_KEY || "").trim()) {
-      res.json({
-        status: "success",
-        provider: "mock",
-        output_image_url: refImageUrl,
-        preset_id: preset?.id,
-        garment_ref_url: refImageUrl,
-      });
-      return;
-    }
-
-    const result = await runYoucamClothLayer({
-      base_image_url: user_selfie_url,
-      accessory_image_url: refImageUrl,
-    });
-
-    res.json({
-      status: "success",
-      ...result,
-      preset_id: preset?.id,
-      garment_ref_url: refImageUrl,
-    });
-  } catch (error) {
-    next(error);
-  }
-});
-
 app.post("/api/youcam/virtual-tryon", async (req, res, next) => {
   try {
     const { garment_image_url, target_model_id, model_selfie_url } = req.body || {};
@@ -269,8 +184,14 @@ app.use((error, _req, res, _next) => {
   res.status(httpError.statusCode || 500).json({ detail: httpError.detail || "Internal Server Error" });
 });
 
-const port = Number.parseInt(process.env.PORT || "8000", 10);
-app.listen(port, () => {
-  console.log(`Server listening on http://localhost:${port}`);
-  console.log(`Uploads directory: ${path.relative(ROOT_DIR, UPLOADS_DIR)}`);
-});
+// On Vercel the app is exported and invoked as a serverless function, so we
+// only bind a port when running the server directly (local dev / node start).
+if (!process.env.VERCEL) {
+  const port = Number.parseInt(process.env.PORT || "8000", 10);
+  app.listen(port, () => {
+    console.log(`Server listening on http://localhost:${port}`);
+    console.log(`Uploads directory: ${path.relative(ROOT_DIR, UPLOADS_DIR)}`);
+  });
+}
+
+export default app;

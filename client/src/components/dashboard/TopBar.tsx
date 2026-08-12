@@ -1,11 +1,11 @@
-import { ArrowLeft, Download } from "lucide-react";
+import { Download } from "lucide-react";
 
 type TopBarProps = {
   onExportReport: () => void;
-  onSwitchMode: () => void;
+  exportDisabled?: boolean;
 };
 
-export default function TopBar({ onExportReport, onSwitchMode }: TopBarProps) {
+export default function TopBar({ onExportReport, exportDisabled = false }: TopBarProps) {
   return (
     <header className="dashboard-topbar">
       <div className="brand-wrap">
@@ -19,11 +19,7 @@ export default function TopBar({ onExportReport, onSwitchMode }: TopBarProps) {
       </div>
 
       <div className="topbar-actions">
-        <button type="button" className="ghost-btn" onClick={onSwitchMode}>
-          <ArrowLeft size={16} />
-          Switch mode
-        </button>
-        <button type="button" className="ghost-btn" onClick={onExportReport}>
+        <button type="button" className="ghost-btn" onClick={onExportReport} disabled={exportDisabled}>
           <Download size={16} />
           Export All Techpacks
         </button>
